@@ -1,12 +1,18 @@
-import React, { Component } from "react";
 import { connect } from "react-redux";
+import React, { Component } from "react";
+import { bindActionCreators } from "redux";
 
 import Row from "../common/layout/row";
+import { getSummary } from "./dashboardActions";
 import Content from "../common/template/content";
 import ValueBox from "../common/widget/valueBox";
 import ContentHeader from "../common/template/content-header";
 
 class Dashboard extends Component {
+  componentWillMount() {
+    this.props.getSummary();
+  }
+
   render() {
     const { credit, debt } = this.props.summary;
     const total = credit - debt;
@@ -45,5 +51,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => ({ summary: state.dashboard.summary });
-
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ getSummary }, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
