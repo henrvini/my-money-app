@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
+import Form from "./billingCycleForm";
 import Tabs from "../common/tab/tabs";
+import List from "./billingCycleList";
 import TabHeader from "../common/tab/tabHeader";
 import Content from "../common/template/content";
 import TabContent from "../common/tab/tabContent";
 import TabsHeader from "../common/tab/tabsHeader";
 import TabsContent from "../common/tab/tabsContent";
-import { selectTab, showTabs } from "../common/tab/tabActions";
 import ContentHeader from "../common/template/contentHeader";
-import List from "./billingCycleList";
+import { selectTab, showTabs } from "../common/tab/tabActions";
 
 class BillingCycle extends Component {
   componentWillMount() {
@@ -35,7 +36,7 @@ class BillingCycle extends Component {
                 <List />
               </TabContent>
               <TabContent id="tabCreate">
-                <h1>Create</h1>
+                <Form />
               </TabContent>
               <TabContent id="tabUpdate">
                 <h1>Update</h1>
