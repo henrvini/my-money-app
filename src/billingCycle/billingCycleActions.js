@@ -15,9 +15,17 @@ function getList() {
 }
 
 function create(values) {
+  return submit(values, "post");
+}
+
+function update(values) {
+  return submit(values, "put");
+}
+
+function submit(values, method) {
   return (dispatch) => {
-    axios
-      .post(`${BASE_URL}/billingCycles`, values)
+    const id = values._id ? values._id : "";
+    axios[method](`${BASE_URL}/billingCycles/${id}`, values)
       .then((res) => {
         toastr.success("Sucesso", "Operação realizada com sucesso");
         dispatch(init());
@@ -47,4 +55,4 @@ function init() {
   ];
 }
 
-module.exports = { getList, create, showUpdate, init };
+module.exports = { getList, create, update, showUpdate, init };
