@@ -23,15 +23,15 @@ class BillingCycleList extends Component {
               this.props.showUpdate(bc);
             }}
           >
-            <i className="fa fa-pencil"></i>
+            <i className="fa fa-pencil" />
           </button>
           <button
             className="btn btn-danger"
             onClick={() => {
-              this.props.showDelete(bc._id);
+              this.props.showDelete(bc);
             }}
           >
-            <i className="fa fa-trash-o"></i>
+            <i className="fa fa-trash-o" />
           </button>
         </td>
       </tr>
@@ -59,6 +59,6 @@ class BillingCycleList extends Component {
 const mapStateToProps = (state) => ({ list: state.billingCycle.list });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ getList, showDelete, showUpdate }, dispatch);
+  bindActionCreators({ getList, showUpdate, showDelete }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleList);

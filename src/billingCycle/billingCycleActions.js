@@ -22,6 +22,10 @@ function update(values) {
   return submit(values, "put");
 }
 
+function remove(values) {
+  return submit(values, "delete");
+}
+
 function submit(values, method) {
   return (dispatch) => {
     const id = values._id ? values._id : "";
@@ -38,10 +42,20 @@ function submit(values, method) {
   };
 }
 
+// Refatorar os métodos showUpdate e showDelete para uma função unica como foi feito em submit
+
 function showUpdate(billingCycle) {
   return [
     showTabs("tabUpdate"),
     selectTab("tabUpdate"),
+    initialize("billingCycleForm", billingCycle),
+  ];
+}
+
+function showDelete(billingCycle) {
+  return [
+    showTabs("tabDelete"),
+    selectTab("tabDelete"),
     initialize("billingCycleForm", billingCycle),
   ];
 }
@@ -55,4 +69,12 @@ function init() {
   ];
 }
 
-module.exports = { getList, create, update, showUpdate, init };
+module.exports = {
+  getList,
+  create,
+  update,
+  remove,
+  showUpdate,
+  showDelete,
+  init,
+};
