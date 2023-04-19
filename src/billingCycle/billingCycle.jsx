@@ -38,15 +38,25 @@ class BillingCycle extends Component {
                 <List />
               </TabContent>
               <TabContent id="tabCreate">
-                <Form onSubmit={(values) => this.props.create(values)} />
+                <Form
+                  onSubmit={(values) => this.props.create(values)}
+                  submitLabel="Incluir"
+                  submitClass="primary"
+                />
               </TabContent>
               <TabContent id="tabUpdate">
-                <Form onSubmit={(values) => this.props.update(values)} />
+                <Form
+                  onSubmit={(values) => this.props.update(values)}
+                  submitLabel="Alterar"
+                  submitClass="info"
+                />
               </TabContent>
               <TabContent id="tabDelete">
                 <Form
                   readOnly={true}
                   onSubmit={(values) => this.props.remove(values)}
+                  submitLabel="Excluir"
+                  submitClass="danger"
                 />
               </TabContent>
             </TabsContent>
