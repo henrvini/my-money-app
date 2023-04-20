@@ -9,6 +9,17 @@ import ItemList from "./itemList";
 import Summary from "./summary";
 
 class BillingCycleForm extends Component {
+  calculateSummary() {
+    const sum = (acc, curr) => acc + curr;
+
+    return {
+      sumOfCredits: this.props.credits
+        .map((credit) => +credit.value || 0)
+        .reduce(sum),
+      sumOfDebts: this.props.debts.map((debt) => +debt.value || 0).reduce(sum),
+    };
+  }
+
   render() {
     const {
       handleSubmit,
@@ -19,6 +30,8 @@ class BillingCycleForm extends Component {
       credits,
       debts,
     } = this.props;
+
+    const { sumOfCredits, sumOfDebts } = this.calculateSummary();
 
     return (
       <form role="form" onSubmit={handleSubmit}>
@@ -51,7 +64,7 @@ class BillingCycleForm extends Component {
             placeholder="Informe o ano"
           />
 
-          <Summary credit={1000} debts={100} />
+          <Summary credit={sumOfCredits} debts={sumOfDebts} />
 
           <ItemList
             cols="12 6"
