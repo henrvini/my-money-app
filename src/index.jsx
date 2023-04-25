@@ -6,7 +6,7 @@ import promise from "redux-promise";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 
-import App from "./main/app";
+import Routes from "./main/routes";
 import reducers from "./main/reducers";
 
 const reduxDevToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
@@ -18,7 +18,7 @@ const store = applyMiddleware(multi, thunk, promise)(createStore)(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Routes />
   </Provider>,
   document.getElementById("app")
 );
