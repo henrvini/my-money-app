@@ -1,12 +1,13 @@
 import React from "react";
-import multi from "redux-multi";
-import thunk from "redux-thunk";
 import ReactDOM from "react-dom";
-import promise from "redux-promise";
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 
-import Routes from "./main/routes";
+import promise from "redux-promise";
+import multi from "redux-multi";
+import thunk from "redux-thunk";
+
+import AuthOrApp from "./main/authOrApp";
 import reducers from "./main/reducers";
 
 const reduxDevToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
@@ -18,7 +19,7 @@ const store = applyMiddleware(multi, thunk, promise)(createStore)(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Routes />
+    <AuthOrApp />
   </Provider>,
   document.getElementById("app")
 );

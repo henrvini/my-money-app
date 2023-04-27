@@ -69,12 +69,4 @@ function init() {
   ];
 }
 
-module.exports = {
-  getList,
-  create,
-  update,
-  remove,
-  showUpdate,
-  showDelete,
-  init,
-};
+export { getList, create, update, remove, showUpdate, showDelete, init };
